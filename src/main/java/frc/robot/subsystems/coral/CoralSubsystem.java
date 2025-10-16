@@ -35,6 +35,7 @@ public class CoralSubsystem extends StateMachine implements AutoCloseable {
         SparkMax coralMotor,
         SparkMax armMotor
     ) {}
+    
     //SPEEEEDSSS
     static final Dimensionless INTAKE_MOTOR_SPEED = Percent.of(100);
     static final Dimensionless SCORE_MOTOR_SPEED = Percent.of(-100);
@@ -147,6 +148,10 @@ public class CoralSubsystem extends StateMachine implements AutoCloseable {
             new SparkMax(Constants.CoralArmHardware.ARM_MOTOR_ID, MotorType.kBrushless)
         );
         return coralSubsystemHardware;
+    }
+    
+    public void setIntakeMotor (Double speed) {
+        m_coralMotor.set(speed);
     }
 
 }
