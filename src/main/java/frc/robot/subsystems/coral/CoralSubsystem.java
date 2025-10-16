@@ -81,6 +81,14 @@ public class CoralSubsystem extends StateMachine implements AutoCloseable {
         },
     }
 
+    @Override
+    public SystemState nextState() {
+        if (getInstance().m_intakeCoralButton.getAsBoolean()) return INTAKE;
+        if (getInstance().m_intakeHighButton.getAsBoolean()) return INTAKE_HIGH;
+        if (getInstance().m_scoreCoralButton.getAsBoolean()) return SCORE;
+        if (getInstance().m_regurgitateButton.getAsBoolean()) return REGURGITATE;
+        if (getInstance().m_emergencyRetractButton.getAsBoolean()) return EMERGENCY_RETRACT;
+
     private static CoralSubsystem s_coralSubsystemInstance;
     private final SparkMax m_coralMotor;
     private final SparkMaxConfig m_coralMotorConfig;
@@ -152,6 +160,7 @@ public class CoralSubsystem extends StateMachine implements AutoCloseable {
     
     public void setIntakeMotor (Double speed) {
         m_coralMotor.set(speed);
+        
     }
 
 }
